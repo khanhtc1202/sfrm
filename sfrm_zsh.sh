@@ -24,7 +24,7 @@ __exit_on_condition() {
 
 
 # print questions from questions list (max count = deep)
-__print_questions() {
+__challenge_by_questions() {
     counter=${__deep}
     until [ ${counter} -lt 1 ]; do
         # print question and wait for answer
@@ -47,7 +47,7 @@ __sfrm() {
     fi
 
     # challenges for deleting
-    __print_questions
+    __challenge_by_questions
     return
 }
 
