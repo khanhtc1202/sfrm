@@ -9,7 +9,12 @@ declare -a __questions=("Are you sure to delete that???"
                 )
 
 # number of questions that will printout when you try to delete something
-__deep=3
+# default is deep = 3
+if [ "$SFRM_MAX" = "" ]; then
+    __deep=3
+else
+    __deep=${SFRM_MAX}
+fi
 
 
 # exit statement
@@ -50,6 +55,7 @@ __sfrm() {
     __challenge_by_questions
     return
 }
+
 
 autoload -Uz add-zsh-hook
 add-zsh-hook preexec __sfrm
