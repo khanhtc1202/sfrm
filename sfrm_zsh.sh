@@ -1,5 +1,6 @@
-#!/usr/bin/env bash
-
+################################################################################
+#                                 SAFE REMOVE                                  #
+################################################################################
 # declare questions store & printout question on current time
 declare -a __questions=("Are you sure to delete that???"
                 "Really???"
@@ -34,7 +35,7 @@ __challenge_by_questions() {
     until [ ${counter} -lt 1 ]; do
         # print question and wait for answer
         index=$(($RANDOM % ${#__questions[@]}))
-        echo "${__questions[$index]} [y/N]:"
+        echo "> ${__questions[$index]} [y/N]:"
         read ans
 
         __exit_on_condition "$ans"
