@@ -7,26 +7,23 @@ declare -a __questions=("Are you sure to delete that???"
                 "F**kin dangerous thing are coming..."
                 "Calm down and think about: what are you going to delete???"
                 )
+
+# number of questions that will printout when you try to delete something
 __deep=3
 
 
-#preexec() {
-#    if [[ $1 != *"rm"* ]]; then
-#        return
-#    fi
-#
-#
-#}
-
+# exit statement
 __exit_on_condition() {
     if [ "$1" = "n" -o "$1" = "N" ]; then
         echo "You are safe now!!!"
-        exit 0
+        exit 1
     else
         return
     fi
 }
 
+
+# print questions from questions list (max count = deep)
 __print_questions() {
     until [ ${__deep} -lt 1 ]; do
         # print question and wait for answer
@@ -41,12 +38,18 @@ __print_questions() {
     done
 }
 
-__print_questions
 
-#__print () {
-#    print "" $1
-#}
-#
-#autoload -Uz  add-zsh-hook
-#
-#add-zsh-hook preexec __print
+__sfrm() {
+    echo "I'm checking $1"
+    # exit if command was not `rm` command
+    if [[ $1 != *"rm"* ]]; then
+        return
+    fi
+
+    # challenges for deleting
+    __print_questions
+    return
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook preexec __sfrm

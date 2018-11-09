@@ -1,1 +1,3 @@
-# undefined-bash
+# sfrm
+
+SFRM (safe rm)
