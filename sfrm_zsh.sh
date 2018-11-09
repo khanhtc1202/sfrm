@@ -25,7 +25,8 @@ __exit_on_condition() {
 
 # print questions from questions list (max count = deep)
 __print_questions() {
-    until [ ${__deep} -lt 1 ]; do
+    counter=${__deep}
+    until [ ${counter} -lt 1 ]; do
         # print question and wait for answer
         index=$(($RANDOM % ${#__questions[@]}))
         echo "${__questions[$index]} [y/N]:"
@@ -34,13 +35,12 @@ __print_questions() {
         __exit_on_condition "$ans"
 
         # interval
-        let __deep-=1
+        let counter-=1
     done
 }
 
 
 __sfrm() {
-    echo "I'm checking $1"
     # exit if command was not `rm` command
     if [[ $1 != *"rm"* ]]; then
         return
