@@ -21,7 +21,7 @@ fi
 # exit statement
 __exit_on_condition() {
     if [ "$1" = "n" -o "$1" = "N" ]; then
-        echo "You are safe now!!!"
+        echo "You are safe now!!!"  # FIXME reject delete close session
         exit 1
     else
         return
@@ -35,7 +35,7 @@ __challenge_by_questions() {
     until [ ${counter} -lt 1 ]; do
         # print question and wait for answer
         index=$(($RANDOM % ${#__questions[@]}))
-        echo "> ${__questions[$index]} [y/N]:"
+        echo "> ${__questions[$index]} [y/N]:"   # FIXME no content question
         read ans
 
         __exit_on_condition "$ans"
