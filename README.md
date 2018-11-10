@@ -8,7 +8,7 @@ __SFRM__ (safe rm) is a preprocessor that checks every command you type on termi
 
 ## Requirement
 
-__preexe__ - a default feature of `zsh` ( and `ksh` ) shell to run before every command you typed. More about `preexe` go [here](https://docstore.mik.ua/orelly/unix3/upt/ch04_16.htm).
+__preexec__ - a default feature of `zsh` ( and `ksh` ) shell to do something you specify before every command you typed. More about `preexe` go [here](https://docstore.mik.ua/orelly/unix3/upt/ch04_16.htm).
 
 ## Install
 
